@@ -1,0 +1,13 @@
+{% extends "base_with_head.html" %}
+
+{% load static %}
+
+{% block main %}
+    <p class='header-1'>Register</p>
+    <p>Enter an email and password below to create an account.</p>
+    <form action='' method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class='aps-btn' type='submit' name='Submit' value='Register'/>
+    </form>
+{% endblock %}

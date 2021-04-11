@@ -1,0 +1,18 @@
+{% extends "base_with_head.html" %}
+
+{% load static %}
+
+{% block main %}
+    <p class='header-1'>Game Guidance</p>
+    <p>This site is unfinished.</p>
+    <p>This site provides a central listing of board games from around the world as well as AI backed recommendations to help you find games best suited to your interests and skill level.</p>
+    <br><br>
+    <div class="centered-div">
+        <a href="{% url 'games:browse' %}"><button class='aps-btn'>Start finding games!</button></a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'games:user-games' %}"><button class='aps-btn'>View my custom recommendations</button></a>
+        {% else %}
+            <a href="{% url 'games:register' %}"><button class='aps-btn'>Register to get custom recommendations</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

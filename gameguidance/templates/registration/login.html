@@ -1,0 +1,28 @@
+{% extends "base_with_head.html" %}
+
+{% load static %}
+
+{% block main %}
+    {% if form.errors %}
+        <p class="error">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method='post'>
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Email:</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <div>
+            <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+        </div>
+        <input class='aps-btn' type='submit' name='Submit' value='Login'/>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+{% endblock %}
